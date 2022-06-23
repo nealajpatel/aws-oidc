@@ -1,0 +1,21 @@
+name: AWS OIDC Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  parse-deploy-config:
+    uses: ./.github/workflows/parse-deploy-config.yaml
+    with:
+      deploy-config: deploy-config.yaml
+  terraform:
+    needs: [parse-deploy-config]
+    uses: ./.github/workflows/terraform.yaml
+    with:
+      deploy-config: ${{ needs.parse-deploy-config.outputs.deploy-config }}
+      working-directory: .
+    secrets: inherit
+
