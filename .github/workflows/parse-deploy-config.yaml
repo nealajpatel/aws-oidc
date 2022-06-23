@@ -1,0 +1,31 @@
+on:
+  workflow_call:
+    inputs:
+      deploy-config:
+        required: true
+        type: string
+    outputs:
+      deploy-config: 
+        value: ${{ jobs.parse-deploy-config.outputs.deploy-config }}
+
+jobs:
+  parse-deploy-config:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy-config: ${{ steps.parse-yaml.outputs.deploy-config }}
+    steps:
+    - name: Check out code repository source code
+      uses: actions/checkout@v2
+
+    - name: Install yq
+      run: |
+        brew install yq
+
+    - name: Parse deployment config
+      id: parse-yaml
+      run: |
+        envs=$(yq eval -I0 -o=json '.providers.aws' ${{ inputs.deploy-config }})
+        echo "::set-output name=deploy-config::$envs"
+    - name: Format deployment config
+      run: |
+        echo ${{ fromJSON(steps.parse-yaml.outputs.deploy-config) }}

@@ -1,0 +1,7 @@
+providers:
+  aws:
+    environments:
+      - name: 
+        main-role: arn:aws:iam::238801441760:role/github-main-role
+        pr-role: arn:aws:iam::238801441760:role/github-pull-request-role
+        region: us-east-1
