@@ -7,7 +7,7 @@ variable "github_organization" {
 variable "github_repositories" {
   description = "List of GitHub repositories."
   type        = list(string)
-  default = ["k8s"]
+  default     = ["k8s", "aws-oidc"]
 }
 
 variable "github_thumbprint" {

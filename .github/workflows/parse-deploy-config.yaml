@@ -1,9 +1,6 @@
 on:
   workflow_call:
     inputs:
-      working-directory:
-        required: true 
-        type: string
       deploy-config:
         required: true
         type: string
@@ -16,9 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       deploy-config: ${{ steps.parse-yaml.outputs.deploy-config }}
-    defaults:
-      run:
-        working-directory: ${{ inputs.working-directory }}
     steps:
     - name: Check out code repository source code
       uses: actions/checkout@v2

@@ -1,9 +1,6 @@
 on:
   workflow_call:
     inputs:
-      working-directory:
-        required: true 
-        type: string
       deploy-config:
         required: true
         type: string
@@ -18,9 +15,6 @@ jobs:
       pull-requests: write
     strategy:
       matrix: ${{ fromJSON(inputs.deploy-config) }}
-    defaults:
-      run:
-        working-directory: ${{ inputs.working-directory }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -100,9 +94,6 @@ jobs:
       contents: read
     strategy:
       matrix: ${{ fromJSON(inputs.deploy-config) }}
-    defaults:
-      run:
-        working-directory: ${{ inputs.working-directory }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

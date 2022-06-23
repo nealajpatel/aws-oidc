@@ -16,6 +16,5 @@ jobs:
     uses: ./.github/workflows/terraform.yaml
     with:
       deploy-config: ${{ needs.parse-deploy-config.outputs.deploy-config }}
-      working-directory: .
     secrets: inherit
 
