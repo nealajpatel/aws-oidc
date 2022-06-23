@@ -1,6 +1,6 @@
 terraform {
   cloud {
-    organization = "nealajpatel"
+    organization = "alliebarnett44"
 
     workspaces {
       name = "aws-oidc"

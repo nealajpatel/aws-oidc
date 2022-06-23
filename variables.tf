@@ -1,13 +1,13 @@
 variable "github_organization" {
   description = "GitHub organization."
   type        = string
-  default     = "nealajpatel"
+  default     = "alliebarnett44"
 }
 
 variable "github_repositories" {
   description = "List of GitHub repositories."
   type        = list(string)
-  default     = ["k8s", "aws-oidc"]
+  default     = ["aws-oidc"]
 }
 
 variable "github_thumbprint" {
@@ -32,7 +32,7 @@ variable "tags" {
   description = "Tags to be applied to resources."
   type        = object({})
   default = {
-    project      = "aws-oidc-gov"
-    organization = "nealajpatel"
+    project      = "aws-oidc"
+    organization = "alliebarnett44"
   }
 }
