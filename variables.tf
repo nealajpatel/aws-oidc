@@ -8,7 +8,7 @@ variable "github_repositories" {
   description = "List of GitHub repositories."
   type        = list(string)
   default     = ["k8s", "aws-oidc"]
-}
+}asodkf;askd; 
 
 variable "github_thumbprint" {
   description = "GitHub OpenID TLS certificate thumbprint."
